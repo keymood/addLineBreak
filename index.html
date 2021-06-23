@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <h1 id="need-break" data-break-loc="2">
+            The title to get break line
+        </h1>
+
+
+        <script>
+
+            const getString = document.getElementById('need-break');
+
+            if (getString) {
+
+                const loc = getString.getAttribute("data-break-loc");
+
+                let trimString = getString.textContent.trimStart();
+
+                const modifiedString = trimString.split(' ').reduce(
+                    (str, part, i) => {
+                        if (loc) {
+                            return str + (i === +loc ? '<br/>' : ' ') + part
+                        } else {
+                            return str + (i === 1 ? '<br/>' : ' ') + part
+                        }
+                    }
+                );
+            
+                getString.innerHTML = modifiedString;
+            }
+            
+        </script>
+
+    </body>
+</html>
